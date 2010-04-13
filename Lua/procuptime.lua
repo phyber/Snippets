@@ -35,7 +35,7 @@ function split(str, sep)
 	end
 	return t
 end
-o-- Reads the uptime from the procuptime path givena bove.
+-- Reads the uptime from the procuptime path givena bove.
 function get_sys_uptime()
 	local uptimefile = assert(io.open(procuptime, "rb"))
 	local content = split(uptimefile:read("*all"), " ")[1]

@@ -71,9 +71,9 @@ end
 
 local pid = arg[1]
 
-if filetype(string.format(procpidstatfmt, pid)) == "regular" then
+if type(tonumber(pid)) == "number" and filetype(string.format(procpidstatfmt, pid)) == "regular" then
 	local procuptime, procname = get_proc_uptime(pid)
 	print(string.format("PID: %d  %s -> %s", pid, procname, duration(get_sys_uptime() - (procuptime / 100))))
 else
-	print(string.format("Error. PID %d none existant or something went terribly wrong.", pid))
+	print(string.format("Error. PID %s none existant or something went terribly wrong.", pid))
 end

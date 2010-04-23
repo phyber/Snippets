@@ -24,14 +24,14 @@ function split(str, sep)
 	local s, e, cap = str:find(pattern, 1)
 	while s do
 		if s ~= 1 or cap ~= "" then
-			table.insert(t, cap)
+			t[#t + 1] = cap
 		end
 		last_end = e + 1
 		s, e, cap = str:find(pattern, last_end)
 	end
 	if last_end <= #str then
 		cap = str:sub(last_end)
-		table.insert(t, cap)
+		t[#t + 1] = cap
 	end
 	return t
 end
@@ -62,7 +62,7 @@ function duration(uptime)
 	local interval = {}
 	local str
 	for _, i in ipairs({60, 60, 24, 365}) do
-		table.insert(interval, uptime % i)
+		interval[#interval + 1] = uptime % i
 		uptime = math.floor(uptime / i)
 	end
 	str = string.format("%dy %dd %dh %dm %ds", uptime, interval[4], interval[3], interval[2], interval[1])

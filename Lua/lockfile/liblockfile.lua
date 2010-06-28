@@ -12,6 +12,7 @@ local io = io
 local os = os
 local print = print
 local tonumber = tonumber
+local assert = assert
 
 module(...)
 
